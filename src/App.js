@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {BrowserRouter,Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Createfood from './components/Createfood';
+import Editfood from './components/Editfood';
+import foodHome from './components/foodHome';
+import NavBarfood from './components/NavBarfood';
+import foodDetails from './components/foodDetails';
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+
+       <div className="container">
+         <NavBarfood/>
+         <Route path="/" exact component={foodHome}></Route>
+         <Route path="/add"component={Createfood}></Route>
+         <Route path="/edit/:id"component={Editfood}></Route>
+         <Route path="/food/:id"component={foodDetails}></Route> 
+       </div>
+           
+      </BrowserRouter>
+  
+    )
+  }
 }
-
-export default App;
